@@ -8,8 +8,8 @@ mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true}
 
 // connection events
 mongoose.connection
-.on("open", ()=>{"You are connected to Mongo"})
-.on("close", ()=>{"Disconnected from Mongo"})
-.on ("error", (error)=>{console.log(error)})
+.on("open", ()=>{console.log("You are connected to Mongo")})
+.on("close", ()=>{console.log("Disconnected from Mongo")})
+.on("error", (error)=>{console.log(error)})
 
 module.exports = mongoose

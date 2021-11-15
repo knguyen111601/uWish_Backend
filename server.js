@@ -7,7 +7,7 @@ const mongoose = require("./db/connection")
 const morgan = require("morgan")
 const cors = require("cors")
 const app = express();
-const {PORT = 1337} = process.env
+const {PORT = 7771} = process.env
 
 // Import Router
 const WishlistRouter = require("./controllers/wishlist")
@@ -22,7 +22,7 @@ app.use(express.json()) // parse json bodies
 // Routes
 //////////////////////////////////////////////////////////////////////
 
-app.get("/", WishlistRouter)
+app.use("/", WishlistRouter)
 
 //////////////////////////////////////////////////////////////////////
 // Server Listener
