@@ -3,7 +3,9 @@
 ///////////////////////////////////////////////////////
 const express = require("express") // express for the router
 const Wishlist = require("../models/wishlist") // wishlist model
-
+const auth = require("../auth")
+// THE WAY THIS WORKS IS BY PUTTING AUTH BEFORE (REQ,RES) IN EVERY ROUTE
+// DO THIS LATER AFTER WE GOT THE SITE ALL WORKING
 ///////////////////////////////////////////////////////
 // Create Router
 ///////////////////////////////////////////////////////
