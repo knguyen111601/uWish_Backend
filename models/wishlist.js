@@ -14,6 +14,7 @@ const wishlistSchema = new Schema({
     image: String,
     price: String,
     url: String,
+    category: String,
     username: {type: String, required: true}
 }, {timestamps: true})
 
