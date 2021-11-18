@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 const {Router} = require("express")
 const router = Router()
 const {SECRET} = process.env
+const auth = require("../auth")
 
 router.post("/signup", async (req, res)=>{
     try {
@@ -25,12 +26,21 @@ router.post("/login", async (req, res)=>{
             if (match) {
                 const token = await jwt.sign({username}, SECRET)
                 res.status(200).json({token, username})
+                console.log(req.body._id)
             } else {
                 res.status(400).json({error: "PASSWORD DOES NOT MATCH"})
             }
         } else {
             res.status(400).json({error: "USER DOES NOT EXIST"})
         }
+    } catch (error) {
+        res.status(400).json({error})
+    }
+})
+
+router.put("/user/:id", auth, async(req, res)=>{
+    try{
+
     } catch (error) {
         res.status(400).json({error})
     }
