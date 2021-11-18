@@ -2,7 +2,7 @@ require("dotenv").config()
 const User = require("../models/user")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const {Router} = require("express")
+const {Router, response} = require("express")
 const router = Router()
 const {SECRET} = process.env
 
@@ -34,6 +34,14 @@ router.post("/login", async (req, res)=>{
         } else {
             res.status(400).json({error: "USER DOES NOT EXIST"})
         }
+    } catch (error) {
+        res.status(400).json({error})
+    }
+})
+
+router.get("/:id", async (req,res)=>{
+    try{
+        res.status(200).json(await User.findById(req.params.id))
     } catch (error) {
         res.status(400).json({error})
     }
