@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken")
 const {Router} = require("express")
 const router = Router()
 const {SECRET} = process.env
-const auth = require("../auth")
 
 router.post("/signup", async (req, res)=>{
     try {
@@ -23,10 +22,12 @@ router.post("/login", async (req, res)=>{
         const user = await User.findOne({username})
         if (user) {
             const match = await bcrypt.compare(password, user.password)
+            const id = user._id
+            const bio = user.bio
+            const pfp = user.pfp
             if (match) {
                 const token = await jwt.sign({username}, SECRET)
-                res.status(200).json({token, username})
-                console.log(req.body._id)
+                res.status(200).json({token, username, id, bio, pfp})
             } else {
                 res.status(400).json({error: "PASSWORD DOES NOT MATCH"})
             }
@@ -38,9 +39,9 @@ router.post("/login", async (req, res)=>{
     }
 })
 
-router.put("/user/:id", auth, async(req, res)=>{
+router.put("/:id", async(req, res)=>{
     try{
-
+        res.status(200).json(await User.findByIdAndUpdate(req.params.id, req.body, {new: true}))
     } catch (error) {
         res.status(400).json({error})
     }
