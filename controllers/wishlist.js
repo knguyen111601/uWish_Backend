@@ -58,5 +58,16 @@ router.delete("/wishlist/:id", auth, async (req, res)=>{
     }
 })
 
+// Show Route - get request
+router.get("/wishlist/:id", auth, async (req,res)=>{
+    try {
+        const {username} = req.payload
+        req.body.username = username
+        res.status(200).json(await Wishlist.findById(req.params.id))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 // Export Router
 module.exports = router
