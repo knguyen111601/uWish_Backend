@@ -14,15 +14,23 @@ use the app whenever they need to.
 The Model will consist of a schema that will have 4 properties on the backend. The front end will have to respect this schema in order to work.
 
 -name: String,
+
 -image: String,
+
 -price: String,
+
 -url: String
 
 
 The Users Authentication Model will consist of a schema that will have 2 properties on the backend.
 
 -username: String, required: true, unique: true,
+
 -password: String, required: true
+
+-pfp: String, default: Blank Profile Image,
+
+-bio: String, default: ""
 
 
 
