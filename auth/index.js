@@ -11,6 +11,7 @@ const auth = async (req, res, next) => {
         const payload = await jwt.verify(token, SECRET)
         if (payload) {
             req.payload = payload
+            console.log(req.payload)
             next()
         } else {
             res.status(400).json({error:"VERIFICATION FAILED OR NO PAYLOAD"})

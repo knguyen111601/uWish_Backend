@@ -30,6 +30,7 @@ The Users Authentication Model will consist of a schema that will have 2 propert
 
 The root table was made off of full CRUD that was JavaScript.
 
+## Wishlist
 | url                 | method | action                                 |        |
 |---------------------|--------|----------------------------------------|--------|
 | /wishlist           | get    | The main/ index page                   | index  |
@@ -38,6 +39,13 @@ The root table was made off of full CRUD that was JavaScript.
 | /wishlist/:id/      | put    | update the wishlist from the list      | update |
 | /wishlist/:id       | delete | delete a wishlist                      | delete |
 
+## User
+| url                 | method | action                                 |        
+|---------------------|--------|----------------------------------------|
+| /signup           | post    | Creates a user account                  |  
+| /login      | post    | Check if user exists and logs in         | 
+| /:id          | get   | Views particular user information                    | 
+| /:id      | put    | Updates user information     | 
 
 ## Challenges
 
